@@ -3,7 +3,7 @@
 from setuptools import setup
 from setuptools import find_packages
 
-from koalemos import Koalemos
+from koalemos.koalemos import Koalemos
 
 requires = [
     'Flask>=0.10.1'
