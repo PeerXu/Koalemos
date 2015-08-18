@@ -15,10 +15,10 @@ def puzzle():
 @app.route('/history', methods=['GET'])
 def history():
     k = Koalemos.get_instance()
-    n = request.args['n'] if 'n' in request.args else 5
+    n = int(request.args['n'] if 'n' in request.args else 5)
     n = n if n < len(k.HISTORY) else len(k.HISTORY)
-    history = k.HISTORY[n:]
-    output = '\n'.join([map(str, record) for record in history])
+    history = k.HISTORY[-n:]
+    output = '\n'.join([','.join(map(str, record)) for record in history])
     return output, 200
 
 @app.route('/commit', methods=['POST'])
